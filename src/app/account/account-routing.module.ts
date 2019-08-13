@@ -12,10 +12,7 @@ const routes: Routes = [
       { path: '**', redirectTo: 'payment' },
       {
         path: 'payment',
-        loadChildren: async () => {
-          const { PaymentModule } = await import('./payment/payment.module');
-          return PaymentModule;
-        }
+        loadChildren: () => import('./payment/payment.module').then(m => m.PaymentModule)
       }
     ]
   }

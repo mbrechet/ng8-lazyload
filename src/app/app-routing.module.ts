@@ -5,10 +5,7 @@ import { Routes, RouterModule } from '@angular/router';
 const routes: Routes = [
   {
     path: 'account',
-    loadChildren: async () => {
-      const { AccountModule } = await import('./account/account.module');
-      return AccountModule;
-    }
+    loadChildren: () => import('./account/account.module').then(m => m.AccountModule)
   }
 ];
 
